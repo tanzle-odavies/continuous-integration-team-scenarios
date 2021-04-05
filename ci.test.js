@@ -12,6 +12,14 @@ describe('CI sequence', () => {
   });
 
   // TODO add the tests between these comments =>
+  it('1. pull latest code', () => {
+    expect(/.*pull.*/ig.test(fileContents)).toBe(true);
+  });
+
+  it('2. add commits', () => {
+    expect(/.*commit.*/ig.test(fileContents)).toBe(true);
+  });
+
   it('3. push to the remote branch with the same name', () => {
     expect(/.*push.*/ig.test(fileContents)).toBe(true);
   });
@@ -30,7 +38,4 @@ describe('CI sequence', () => {
 
   it('7. If everything is good in production for some period of time, merge changes to master.', () => {
     expect(/.*merge.*to\s+master.*/ig.test(fileContents)).toBe(true);
-  });
-  // TODO <= add the tests between these comments
-
 });
